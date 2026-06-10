@@ -57,8 +57,8 @@ export default function Workspace() {
                 style={{
                   border: 'none', cursor: 'pointer', borderRadius: 100,
                   padding: '9px 18px', fontSize: 12, letterSpacing: '0.16em',
-                  background: mode === m.key ? (m.key === 'see' ? 'var(--vo-teal)' : m.key === 'recommend' ? 'var(--vo-text)' : 'var(--vo-gold)') : 'transparent',
-                  color: mode === m.key ? 'var(--vo-ink)' : 'var(--vo-text-dim)',
+                  background: mode === m.key ? (m.key === 'see' ? 'var(--wc-blue)' : m.key === 'recommend' ? 'var(--wc-gold)' : 'var(--wc-magenta)') : 'transparent',
+                  color: mode === m.key ? (m.key === 'recommend' ? 'var(--wc-charcoal)' : '#fff') : 'var(--vo-text-dim)',
                   transition: 'all 0.18s ease',
                 }}
               >
@@ -75,7 +75,7 @@ export default function Workspace() {
                 style={{
                   background: 'none', border: 'none', cursor: 'pointer', padding: '12px 14px',
                   color: tab === t ? 'var(--vo-text)' : 'var(--vo-text-faint)',
-                  borderBottom: tab === t ? '2px solid var(--vo-gold)' : '2px solid transparent',
+                  borderBottom: tab === t ? '2px solid var(--vo-accent)' : '2px solid transparent',
                   marginBottom: -1,
                 }}>
                 {t}
@@ -189,11 +189,11 @@ function IntelligenceMap({ engagement }) {
       ))}
       {data.funderSignals.length > 0 && (
         <section style={{ marginTop: 36 }}>
-          <p className="vo-eyebrow" style={{ marginBottom: 16, color: 'var(--vo-gold)' }}>Funder signals · {data.funderSignals.length}</p>
+          <p className="vo-eyebrow" style={{ marginBottom: 16, color: 'var(--vo-accent)' }}>Funder signals · {data.funderSignals.length}</p>
           <div className="vo-stack">
             {data.funderSignals.map((f) => (
               <div key={f.id} className="vo-card" style={{ padding: 18 }}>
-                <p style={{ margin: '0 0 10px', color: 'var(--vo-gold-bright)', fontSize: 14 }}>{f.signal}</p>
+                <p style={{ margin: '0 0 10px', color: 'var(--vo-accent-bright)', fontSize: 14 }}>{f.signal}</p>
                 <div className="vo-quote">{f.quote}<span className="attr">{f.source}</span></div>
               </div>
             ))}
@@ -353,7 +353,7 @@ function SeeMode({ engagement, tab }) {
                 <button className="vo-btn vo-btn-teal" disabled={running === t.id} onClick={() => runThread(t.id)}>
                   {running === t.id ? 'Researching…' : 'Run See research'}
                 </button>
-              ) : <span className="vo-eyebrow" style={{ color: t.status === 'error' ? 'var(--vo-red)' : 'var(--vo-teal)' }}>{t.status}</span>}
+              ) : <span className="vo-eyebrow" style={{ color: t.status === 'error' ? 'var(--vo-red)' : 'var(--wc-blue)' }}>{t.status}</span>}
             </div>
             {t.status === 'completed' && (
               <div className="vo-stack" style={{ borderTop: '1px solid var(--vo-line)', paddingTop: 16 }}>

@@ -1,47 +1,63 @@
 /* ============================================================
    VANTAGE OS — Design System
    WeCreate Media proprietary intelligence platform.
-   Aesthetic: precision instrument. Navy + gold (Hear),
-   slate + teal (See). Confident, minimal, engineered.
+   Brand palette (from WeCreate brand guide):
+     Blue     #118DCD   See
+     Magenta  #D82E86   Hear / primary accent
+     Gold     #FBB62D   Recommend
+     Charcoal #25292C   base
+   Hear · See · Recommend.
    ============================================================ */
 
 :root {
-  --vo-ink: #0a0e1a;
-  --vo-navy: #101935;
-  --vo-navy-2: #18233f;
-  --vo-line: rgba(255, 255, 255, 0.08);
-  --vo-line-strong: rgba(255, 255, 255, 0.16);
+  /* Brand core */
+  --wc-magenta: #D82E86;
+  --wc-magenta-bright: #ef4ba0;
+  --wc-blue: #118DCD;
+  --wc-blue-bright: #36a9e4;
+  --wc-gold: #FBB62D;
+  --wc-gold-bright: #ffc956;
+  --wc-charcoal: #25292C;
 
-  --vo-gold: #c8a04e;
-  --vo-gold-bright: #e3bd6a;
-  --vo-paper: #f6f4ee;
+  /* Surfaces — warm charcoal base, not pure black */
+  --vo-ink: #1a1d20;
+  --vo-surface: #25292C;
+  --vo-surface-2: #2f3438;
+  --vo-line: rgba(255, 255, 255, 0.09);
+  --vo-line-strong: rgba(255, 255, 255, 0.18);
 
-  --vo-slate: #0d1b22;
-  --vo-slate-2: #13262f;
-  --vo-teal: #4fd1c5;
-  --vo-teal-dim: #2c8c84;
+  /* Light surfaces (client-facing share view) */
+  --vo-paper: #ffffff;
+  --vo-paper-ink: #25292C;
 
-  --vo-text: #eef1f8;
-  --vo-text-dim: #9aa6c0;
-  --vo-text-faint: #5d6680;
+  /* Primary accent defaults to magenta (Hear). Mode themes override. */
+  --vo-accent: var(--wc-magenta);
+  --vo-accent-bright: var(--wc-magenta-bright);
 
-  --vo-green: #4ade80;
-  --vo-yellow: #facc15;
-  --vo-red: #f87171;
+  /* Text */
+  --vo-text: #f3f4f5;
+  --vo-text-dim: #a8aeb4;
+  --vo-text-faint: #6b7176;
 
-  --vo-display: "Georgia", "Times New Roman", serif;
-  --vo-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  /* Status */
+  --vo-green: #3ec96f;
+  --vo-yellow: var(--wc-gold);
+  --vo-red: #f2545b;
+
+  /* Type — display serif echoes the WeCreate wordmark; clean sans for body.
+     Replace the serif stack with the licensed brand display face when available. */
+  --vo-display: "Playfair Display", "Georgia", "Times New Roman", serif;
+  --vo-sans: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   --vo-mono: "SF Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
 
   --vo-radius: 4px;
-  --vo-radius-lg: 8px;
+  --vo-radius-lg: 10px;
 }
 
 * { box-sizing: border-box; }
 
 html, body {
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   background: var(--vo-ink);
   color: var(--vo-text);
   font-family: var(--vo-sans);
@@ -62,31 +78,35 @@ a { color: inherit; text-decoration: none; }
 
 .vo-display {
   font-family: var(--vo-display);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-}
-
-.vo-wordmark {
-  font-family: var(--vo-mono);
   font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  font-size: 13px;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
 }
-.vo-wordmark .dot { color: var(--vo-gold); }
 
-.vo-rule {
-  height: 1px;
-  background: var(--vo-line);
-  position: relative;
+/* Wordmark — italic serif nods to the WeCreate script lockup */
+.vo-wordmark {
+  font-family: var(--vo-display);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  font-size: 19px;
 }
+.vo-wordmark .dot { color: var(--vo-accent); font-style: normal; }
+.vo-wordmark .os {
+  font-family: var(--vo-mono);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  vertical-align: middle;
+  margin-left: 5px;
+  color: var(--vo-accent);
+}
+
+.vo-rule { height: 1px; background: var(--vo-line); position: relative; }
 .vo-rule::before {
-  content: "";
-  position: absolute;
-  left: 0; top: -1px;
-  width: 32px; height: 3px;
-  background: var(--vo-gold);
+  content: ""; position: absolute; left: 0; top: -1px;
+  width: 36px; height: 3px; background: var(--vo-accent);
 }
 
 .vo-btn {
@@ -102,25 +122,27 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer;
   transition: all 0.15s ease;
 }
-.vo-btn:hover { border-color: var(--vo-gold); color: var(--vo-gold-bright); }
+.vo-btn:hover { border-color: var(--vo-accent); color: var(--vo-accent-bright); }
 .vo-btn-primary {
-  background: var(--vo-gold);
-  border-color: var(--vo-gold);
-  color: var(--vo-ink);
+  background: var(--vo-accent);
+  border-color: var(--vo-accent);
+  color: #fff;
   font-weight: 600;
 }
-.vo-btn-primary:hover { background: var(--vo-gold-bright); color: var(--vo-ink); }
-.vo-btn-teal { background: var(--vo-teal); border-color: var(--vo-teal); color: var(--vo-ink); font-weight: 600; }
-.vo-btn-teal:hover { background: #6ee0d5; }
+.vo-btn-primary:hover { background: var(--vo-accent-bright); border-color: var(--vo-accent-bright); color: #fff; }
+.vo-btn-teal, .vo-btn-blue {
+  background: var(--wc-blue); border-color: var(--wc-blue); color: #fff; font-weight: 600;
+}
+.vo-btn-teal:hover, .vo-btn-blue:hover { background: var(--wc-blue-bright); border-color: var(--wc-blue-bright); }
 .vo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 .vo-card {
-  background: var(--vo-navy);
+  background: var(--vo-surface);
   border: 1px solid var(--vo-line);
   border-radius: var(--vo-radius-lg);
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
-.vo-card-hover:hover { border-color: var(--vo-gold); transform: translateY(-2px); }
+.vo-card-hover:hover { border-color: var(--vo-accent); transform: translateY(-2px); }
 
 .vo-input, .vo-textarea, .vo-select {
   width: 100%;
@@ -132,65 +154,49 @@ a { color: inherit; text-decoration: none; }
   font-size: 14px;
   padding: 11px 13px;
 }
-.vo-input:focus, .vo-textarea:focus, .vo-select:focus {
-  outline: none;
-  border-color: var(--vo-gold);
-}
+.vo-input:focus, .vo-textarea:focus, .vo-select:focus { outline: none; border-color: var(--vo-accent); }
 .vo-textarea { resize: vertical; min-height: 120px; font-family: var(--vo-mono); font-size: 13px; line-height: 1.5; }
 .vo-label {
-  display: block;
-  font-family: var(--vo-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--vo-text-dim);
-  margin-bottom: 7px;
+  display: block; font-family: var(--vo-mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--vo-text-dim); margin-bottom: 7px;
 }
 
 .vo-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--vo-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 100px;
-  border: 1px solid var(--vo-line-strong);
-  color: var(--vo-text-dim);
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--vo-mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 100px;
+  border: 1px solid var(--vo-line-strong); color: var(--vo-text-dim);
 }
 
 .vo-quote {
-  border-left: 2px solid var(--vo-gold);
+  border-left: 3px solid var(--vo-accent);
   padding: 12px 0 12px 18px;
   font-family: var(--vo-display);
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 17px;
   line-height: 1.5;
   color: var(--vo-text);
 }
 .vo-quote .attr {
-  display: block;
-  margin-top: 8px;
-  font-family: var(--vo-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--vo-text-faint);
-  text-transform: none;
+  display: block; margin-top: 8px;
+  font-family: var(--vo-mono); font-size: 11px;
+  letter-spacing: 0.08em; color: var(--vo-text-faint); text-transform: none;
 }
 
-[data-mode="see"] { --vo-gold: var(--vo-teal); --vo-gold-bright: #6ee0d5; }
-[data-mode="see"] .vo-quote { border-left-color: var(--vo-teal); }
-[data-mode="see"] .vo-rule::before { background: var(--vo-teal); }
+/* Mode theming — each phase takes a brand color */
+[data-mode="hear"]      { --vo-accent: var(--wc-magenta); --vo-accent-bright: var(--wc-magenta-bright); }
+[data-mode="see"]       { --vo-accent: var(--wc-blue);    --vo-accent-bright: var(--wc-blue-bright); }
+[data-mode="recommend"] { --vo-accent: var(--wc-gold);    --vo-accent-bright: var(--wc-gold-bright); }
 
 .vo-container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
 .vo-stack > * + * { margin-top: 16px; }
 .vo-spinner {
   width: 16px; height: 16px;
   border: 2px solid var(--vo-line-strong);
-  border-top-color: var(--vo-gold);
-  border-radius: 50%;
-  display: inline-block;
+  border-top-color: var(--vo-accent);
+  border-radius: 50%; display: inline-block;
   animation: vo-spin 0.7s linear infinite;
 }
 @keyframes vo-spin { to { transform: rotate(360deg); } }
@@ -198,7 +204,4 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
-
-@media (max-width: 720px) {
-  .vo-container { padding: 0 18px; }
-}
+@media (max-width: 720px) { .vo-container { padding: 0 18px; } }

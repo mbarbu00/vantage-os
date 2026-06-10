@@ -24,7 +24,7 @@ export default function ClientShareView() {
       <header style={{ borderBottom: '1px solid rgba(0,0,0,0.08)', padding: '20px 0' }}>
         <div className="vo-container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ fontFamily: 'var(--vo-mono)', fontWeight: 600, letterSpacing: '0.28em', textTransform: 'uppercase', fontSize: 13 }}>
-            VANTAGE<span style={{ color: 'var(--vo-gold)' }}>·</span>OS
+            Vantage<span style={{ color: 'var(--wc-magenta)' }}>.</span>OS
           </span>
           {state.status === 'ready' && <span style={{ fontFamily: 'var(--vo-mono)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8a93a8' }}>Prepared for {state.artifact.client_name}</span>}
         </div>
@@ -42,7 +42,7 @@ export default function ClientShareView() {
           <article>
             <p style={{ fontFamily: 'var(--vo-mono)', fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#8a93a8' }}>{state.artifact.type}</p>
             <h1 style={{ fontFamily: 'var(--vo-display)', fontSize: 40, margin: '12px 0 24px', lineHeight: 1.1 }}>{state.artifact.title}</h1>
-            <div style={{ height: 3, width: 48, background: 'var(--vo-gold)', marginBottom: 36 }} />
+            <div style={{ height: 3, width: 48, background: 'var(--wc-magenta)', marginBottom: 36 }} />
             <ArtifactBody content={state.artifact.content} />
           </article>
         )}
